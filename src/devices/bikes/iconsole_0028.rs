@@ -15,9 +15,11 @@ use crate::{Equipment, EquipmentType};
 static FTMS_SERVICE_UUID: &str = "00001826"; // FTMS service
 static FTMS_STATS_UUID: &str = "00002ad2"; // FTMS read?
 
+/// An [iConsole+](https://www.iconsole.plus/about-iconsole/) (version 28) exercise equipment.
 #[derive(Debug, Clone)]
 pub struct Iconsole0028Bike {
     peripheral: Peripheral,
+    /// The name of the bike (iConsole+0028)
     pub name: String,
     control: Option<Characteristic>,
     stats: Option<Characteristic>,

@@ -4,8 +4,10 @@ use async_trait::async_trait;
 
 use crate::{Equipment, ftms::FTMSData};
 
+/// A bogus non-Bluetooth device, which only prints debug information at the moment.
 #[derive(Debug, Clone)]
 pub struct NonBluetoothDevice {
+    /// The name of the device
     pub name: String,
     max_level: i16,
     start_time: std::time::Instant,

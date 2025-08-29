@@ -12,9 +12,12 @@ use crate::bluetooth::get_peripheral;
 use crate::ftms::FTMSData;
 use crate::{Equipment, EquipmentType};
 
+/// A debug bike.
+/// Any bluetooth device containing "Console" in its name gets connected to, and every `NOTIFY` characteristic gets subscribed to.
 #[derive(Debug, Clone)]
 pub struct DebugBike {
     peripheral: Peripheral,
+    /// The name of the device
     pub name: String,
     idk: Vec<Characteristic>,
     max_level: i16,
