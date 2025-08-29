@@ -27,9 +27,11 @@ pub struct Iconsole0028Bike {
 #[async_trait]
 impl Equipment for Iconsole0028Bike {
     async fn new(max_level: i16, shutdown_rx: &mut Receiver<()>) -> anyhow::Result<Self> {
-        let meta = get_peripheral(EquipmentType::Iconsole0028Bike, shutdown_rx)
-            .await?
-            .unwrap();
+        let meta = get_peripheral(EquipmentType::Iconsole0028Bike, shutdown_rx).await?;
+        if meta.is_none() {
+            return Err(anyhow::anyhow!("No peripheral found"));
+        }
+        let meta = meta.unwrap();
         let bike = Iconsole0028Bike {
             peripheral: meta.0,
             name: meta.1,

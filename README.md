@@ -32,7 +32,7 @@ async fn main() -> anyhow::Result<()> {
     });
 
     let mut equipment = equipment_type_to_equipment(
-        "device".into(),
+        EquipmentType::NonBluetoothDevice,
         32,
         &mut shutdown_rx,
     )

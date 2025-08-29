@@ -29,6 +29,10 @@ pub async fn get_peripheral(
         _ => "bike",
     };
 
+    if shutdown_rx.try_recv().is_ok() {
+        return Ok(peripheral_meta);
+    }
+
     while let Some(event) = futures::stream::iter(events.iter_mut())
         .flatten()
         .next()
