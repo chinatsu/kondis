@@ -1,0 +1,12 @@
+[package]
+name = "kondis"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.99"
+async-trait = "0.1.89"
+btleplug = { version = "0.11", features = ["serde"] }
+tokio = { version = "1", features = ["full"] }
+futures = "0.3.31"
+uuid = "1.18.0"
