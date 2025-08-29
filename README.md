@@ -9,7 +9,6 @@ a simple library to communicate with exercise equipment
 - [ ] iConsole+0028
     - [x] set target cadence (RPM)
     - [x] set target power (W)
-        - **note** target cadence and target power is currently linked to the same number with `bike.set_level(n)`.
     - [ ] read FTMS data (kind of, incomplete)
 
 ## usage
