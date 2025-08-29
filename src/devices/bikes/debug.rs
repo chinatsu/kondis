@@ -53,10 +53,20 @@ impl Equipment for DebugBike {
         Ok(())
     }
 
-    async fn set_level(&self, level: i16) -> anyhow::Result<()> {
-        if !(1..=self.max_level).contains(&level) {
+    async fn set_target_cadence(&self, rpm: i16) -> anyhow::Result<()> {
+        if !(1..=self.max_level).contains(&rpm) {
             return Err(anyhow::anyhow!(
-                "Level must be between 1 and {}",
+                "RPM must be between 1 and {}",
+                self.max_level
+            ));
+        }
+        Ok(())
+    }
+
+    async fn set_target_power(&self, watts: i16) -> anyhow::Result<()> {
+        if !(1..=self.max_level).contains(&watts) {
+            return Err(anyhow::anyhow!(
+                "Watts must be between 1 and {}",
                 self.max_level
             ));
         }

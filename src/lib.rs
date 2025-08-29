@@ -77,8 +77,7 @@ pub trait Equipment {
     ///     Ok(())
     /// }
     async fn disconnect(&self) -> anyhow::Result<()>;
-    /// Set the equipment resistance
-    /// `level` is the desired resistance level to set, and is used as target watts and target RPM
+    /// Set the equipment target cadence
     ///
     /// # Examples
     ///
@@ -90,10 +89,26 @@ pub trait Equipment {
     ///     let (_, mut shutdown_rx) = std::sync::mpsc::channel();
     ///     let mut device = NonBluetoothDevice::new(32, &mut shutdown_rx).await?;
     ///     device.connect().await?;
-    ///     device.set_level(32).await?;
+    ///     device.set_target_cadence(32).await?;
     ///     Ok(())
     /// }
-    async fn set_level(&self, level: i16) -> anyhow::Result<()>;
+    async fn set_target_cadence(&self, rpm: i16) -> anyhow::Result<()>;
+    /// Set the equipment target power
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use kondis::{devices::NonBluetoothDevice, Equipment};
+    ///
+    /// #[tokio::main]
+    /// async fn main() -> anyhow::Result<()> {
+    ///     let (_, mut shutdown_rx) = std::sync::mpsc::channel();
+    ///     let mut device = NonBluetoothDevice::new(32, &mut shutdown_rx).await?;
+    ///     device.connect().await?;
+    ///     device.set_target_power(32).await?;
+    ///     Ok(())
+    /// }
+    async fn set_target_power(&self, watts: i16) -> anyhow::Result<()>;
     /// Read the latest notification received and process it to an easy to use FTMS format
     ///
     /// # Examples

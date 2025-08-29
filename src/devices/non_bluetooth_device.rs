@@ -30,18 +30,34 @@ impl Equipment for NonBluetoothDevice {
         println!("Disconnecting from: {}", self.name);
         Ok(())
     }
-    async fn set_level(&self, level: i16) -> anyhow::Result<()> {
-        if !(1..=self.max_level).contains(&level) {
+    async fn set_target_cadence(&self, rpm: i16) -> anyhow::Result<()> {
+        if !(1..=self.max_level).contains(&rpm) {
             return Err(anyhow::anyhow!(
-                "Level must be between 1 and {}",
+                "RPM must be between 1 and {}",
                 self.max_level
             ));
         }
         let seconds_elapsed = self.start_time.elapsed().as_secs_f32();
-        // Simulate setting the level on a non-Bluetooth device
+        // Simulate setting the rpm on a non-Bluetooth device
+        println!(
+            "Setting target RPM on: {} to {} at {}",
+            self.name, rpm, seconds_elapsed
+        );
+        Ok(())
+    }
+
+    async fn set_target_power(&self, watts: i16) -> anyhow::Result<()> {
+        if !(1..=self.max_level).contains(&watts) {
+            return Err(anyhow::anyhow!(
+                "Watts must be between 1 and {}",
+                self.max_level
+            ));
+        }
+        let seconds_elapsed = self.start_time.elapsed().as_secs_f32();
+        // Simulate setting the watts on a non-Bluetooth device
         println!(
             "Setting level on: {} to {} at {}",
-            self.name, level, seconds_elapsed
+            self.name, watts, seconds_elapsed
         );
         Ok(())
     }
