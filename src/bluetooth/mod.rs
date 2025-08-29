@@ -8,6 +8,7 @@ use futures::StreamExt as _;
 
 use crate::EquipmentType;
 
+/// Get a Bluetooth peripheral for the specified equipment type
 pub async fn get_peripheral(
     equipment_type: EquipmentType,
     shutdown_rx: &mut Receiver<()>,
