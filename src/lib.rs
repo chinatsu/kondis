@@ -1,5 +1,3 @@
-/// # kondis
-/// 
 /// ***kondis*** [n, slang] *physical condition*
 /// 
 /// a simple library to communicate with exercise equipment
